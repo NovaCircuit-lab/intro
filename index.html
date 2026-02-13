@@ -3,135 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scratch Team</title>
-
+<title>NovaCircuit Team</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
 <style>
-body {
-  background: #020617;
-}
-.modal {
-  display: none;
-}
-.modal.active {
-  display: flex;
-}
+body { background: #020617; font-family:'Helvetica', sans-serif; overflow-x:hidden; }
+.hidden { display:none; }
+.cursor-pointer { cursor:pointer; }
+
+/* Hero 打字動畫 */
+.blink { animation: blink 1s step-start infinite; }
+@keyframes blink { 50% { opacity:0; } }
+
+/* Modal */
+.modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); align-items:center; justify-content:center; z-index:50; }
+.modal.active { display:flex; }
+.aspect-video { position:relative; width:100%; padding-bottom:56.25%; }
+.aspect-video iframe { position:absolute; width:100%; height:100%; top:0; left:0; }
+
+/* 動態背景 */
+#cyberBG { position:fixed; inset:0; z-index:-10; pointer-events:none; background:#020617; overflow:hidden; }
+.particle { position:absolute; width:2px; height:2px; background:rgba(0,255,255,0.5); border-radius:50%; animation:move 5s linear infinite; }
+@keyframes move { 0% { transform:translateY(0) translateX(0); } 100% { transform:translateY(-120vh) translateX(50vw); } }
 </style>
 </head>
+<body class="text-slate-200 relative">
 
-<body class="text-slate-200">
+<!-- 動態背景 -->
+<div id="cyberBG"></div>
 
 <!-- Navbar -->
-<nav class="fixed top-0 w-full bg-black bg-opacity-70 backdrop-blur-md border-b border-gray-800 z-50">
+<nav class="fixed top-0 w-full bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-800 z-50">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="text-xl font-bold text-cyan-400">SCRATCH TEAM</div>
+    <div class="flex items-center gap-4">
+      <img id="teamLogo" src="assets/logo.png" alt="Team Logo" class="w-10 h-10 rounded-full">
+      <div class="text-xl font-bold text-green-400">NovaCircuit Team</div>
+    </div>
     <div class="space-x-6 hidden md:block">
-      <a href="#home" class="hover:text-cyan-400">首頁</a>
-      <a href="#team" class="hover:text-cyan-400">成員</a>
-      <a href="#projects" class="hover:text-cyan-400">專案</a>
+      <a href="#home" class="hover:text-green-400 transition">首頁</a>
+      <a href="#team" class="hover:text-green-400 transition">成員</a>
+      <a href="#projects" class="hover:text-green-400 transition">專案</a>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
-<section id="home" class="pt-32 pb-20 text-center px-6">
+<!-- Hero Section -->
+<section id="home" class="pt-32 pb-20 text-center px-6 relative z-10">
   <h1 class="text-5xl md:text-6xl font-black mb-6">
-    <span class="block">創意無界</span>
-    <span class="text-cyan-400">代碼構築未來</span>
+    <span class="block text-green-400">創意無界</span>
+    <span class="text-green-300">代碼構築未來</span>
   </h1>
-
-  <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">
-    我們是來自 Scratch 的開發團隊，
-    將邏輯與創意轉化為真正可運行的世界。
-  </p>
-
-  <a href="#projects" class="px-6 py-3 bg-cyan-600 rounded-lg hover:bg-cyan-500">
-    探索專案
-  </a>
+  <p class="max-w-2xl mx-auto text-gray-300 text-lg mb-6 font-mono" id="typedText"></p>
+  <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-green-500 to-green-400 hover:from-green-400 hover:to-green-500 rounded-lg transition-all shadow-lg shadow-green-500/30">探索專案</a>
 </section>
 
-<!-- Team -->
-<section id="team" class="py-20 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-12">核心成員</h2>
-
+<!-- Team Section -->
+<section id="team" class="py-20 px-6 max-w-6xl mx-auto relative z-10">
+  <h2 class="text-3xl font-bold text-center mb-12 text-green-400">團隊成員</h2>
   <div class="grid md:grid-cols-2 gap-8">
-    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
-      <h3 class="text-xl font-bold">光風濟月</h3>
-      <p class="text-gray-400 mb-3">系統架構 System Architect</p>
-      <p class="text-sm text-gray-400 mb-4">
-        專精於 3D 系統建構與邏輯設計。
-      </p>
-      <div class="flex flex-wrap gap-2 text-xs">
-        <span class="bg-gray-800 px-2 py-1 rounded">3D技術</span>
-        <span class="bg-gray-800 px-2 py-1 rounded">演算法</span>
-        <span class="bg-gray-800 px-2 py-1 rounded">系統優化</span>
-      </div>
+    <!-- 成員卡片 -->
+    <div onclick="showProfile('光風濟月')" class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-green-500 transition cursor-pointer">
+      <img id="avatar-光風濟月" src="assets/avatar-GF.png" class="w-24 h-24 rounded-full mx-auto mb-4">
+      <h3 class="text-xl font-bold text-green-300 text-center">光風濟月</h3>
+      <p class="text-gray-300 text-center mb-2">系統架構 System Architect</p>
     </div>
-
-    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
-      <h3 class="text-xl font-bold">理智編程（理程）</h3>
-      <p class="text-gray-400 mb-3">視覺創建 Visual Creator</p>
-      <p class="text-sm text-gray-400 mb-4">
-        負責視覺設計與創意發想。
-      </p>
-      <div class="flex flex-wrap gap-2 text-xs">
-        <span class="bg-gray-800 px-2 py-1 rounded">視覺設計</span>
-        <span class="bg-gray-800 px-2 py-1 rounded">Debug</span>
-        <span class="bg-gray-800 px-2 py-1 rounded">流程架構</span>
-      </div>
+    <div onclick="showProfile('理程')" class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-purple-500 transition cursor-pointer">
+      <img id="avatar-理程" src="assets/avatar-LC.png" class="w-24 h-24 rounded-full mx-auto mb-4">
+      <h3 class="text-xl font-bold text-purple-300 text-center">理程</h3>
+      <p class="text-gray-300 text-center mb-2">視覺創建 Visual Creator</p>
     </div>
   </div>
 </section>
 
-<!-- Projects -->
-<section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-12">專案展示</h2>
+<!-- Member Profiles -->
+<div id="profile-光風濟月" class="hidden max-w-4xl mx-auto p-6 my-12 bg-gray-900 rounded-xl border border-green-500 relative z-10">
+  <h2 class="text-2xl font-bold text-green-300 mb-2">光風濟月</h2>
+  <p class="text-gray-300 mb-2">系統架構 System Architect</p>
+  <p class="text-gray-400 mb-4">專精於系統建構與演算法邏輯設計。</p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-gray-800 px-2 py-1 rounded border border-green-500 text-xs">3D技術</span>
+    <span class="bg-gray-800 px-2 py-1 rounded border border-green-500 text-xs">演算法</span>
+    <span class="bg-gray-800 px-2 py-1 rounded border border-green-500 text-xs">系統優化</span>
+  </div>
+  <div class="flex gap-4">
+    <a href="https://scratch.mit.edu/users/fuguangji/" target="_blank" class="text-green-400 hover:underline">Scratch</a>
+    <a href="https://fuguangji.github.io " target="_blank" class="text-green-400 hover:underline">GitHub</a>
+  </div>
+</div>
 
+<div id="profile-理程" class="hidden max-w-4xl mx-auto p-6 my-12 bg-gray-900 rounded-xl border border-purple-500 relative z-10">
+  <h2 class="text-2xl font-bold text-purple-300 mb-2">理程</h2>
+  <p class="text-gray-300 mb-2">視覺創建 Visual Creator</p>
+  <p class="text-gray-400 mb-4">視覺設計、創意發想與測試員。</p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="bg-gray-800 px-2 py-1 rounded border border-purple-500 text-xs">視覺設計</span>
+    <span class="bg-gray-800 px-2 py-1 rounded border border-purple-500 text-xs">尋找各種難以發現的bug</span>
+    <span class="bg-gray-800 px-2 py-1 rounded border border-purple-500 text-xs">創新思維</span>
+  </div>
+  <div class="flex gap-4">
+    <a href="https://scratch.mit.edu/users/evan_1112/" target="_blank" class="text-purple-400 hover:underline">Scratch</a>
+    <a href="https://github.com/???" target="_blank" class="text-purple-400 hover:underline">GitHub</a>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 px-6 max-w-6xl mx-auto relative z-10">
+  <h2 class="text-3xl font-bold text-center mb-12 text-green-400">專案展示</h2>
   <div class="grid md:grid-cols-2 gap-6">
-    <div onclick="openModal('1227949073')" 
-         class="cursor-pointer bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500 transition">
-      <h3 class="text-lg font-bold">Project Alpha</h3>
-      <p class="text-sm text-gray-400">作者：理程</p>
-      <div class="mt-4 text-cyan-400 text-sm">點擊預覽 →</div>
+    <div onclick="openModal('1178582633')" class="cursor-pointer bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-green-500 transition">
+      <h3 class="text-lg font-bold text-green-300">Project Alpha</h3>
+      <p class="text-sm text-gray-300">作者：光風濟月</p>
+      <div class="mt-4 text-green-400 text-sm">點擊預覽 →</div>
     </div>
-
-    <div onclick="openModal('1277010399')" 
-         class="cursor-pointer bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500 transition">
-      <h3 class="text-lg font-bold">Project Beta</h3>
-      <p class="text-sm text-gray-400">作者：理程</p>
-      <div class="mt-4 text-cyan-400 text-sm">點擊預覽 →</div>
+    <div onclick="openModal('1277010399')" class="cursor-pointer bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-purple-500 transition">
+      <h3 class="text-lg font-bold text-purple-300">Project Beta</h3>
+      <p class="text-sm text-gray-300">作者：理程</p>
+      <div class="mt-4 text-purple-400 text-sm">點擊預覽 →</div>
     </div>
   </div>
 </section>
 
-<!-- Modal -->
-<div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-80 items-center justify-center z-50">
+<!-- Project Modal -->
+<div id="projectModal" class="modal flex">
   <div class="bg-gray-900 w-11/12 max-w-4xl rounded-xl overflow-hidden border border-gray-700">
     <div class="flex justify-between items-center p-4 border-b border-gray-700">
-      <span class="font-bold">專案預覽</span>
-      <button onclick="closeModal()">✕</button>
+      <span class="font-bold text-green-400">專案預覽</span>
+      <button onclick="closeModal()" class="text-gray-300 hover:text-white text-xl">✕</button>
     </div>
-    <div class="aspect-w-16 aspect-h-9 bg-black">
-      <iframe id="projectFrame"
-              width="100%"
-              height="500"
-              frameborder="0"
-              allowfullscreen></iframe>
+    <div class="aspect-video">
+      <iframe id="projectFrame" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
 <script>
-function openModal(projectId) {
-  document.getElementById("projectModal").classList.add("active");
-  document.getElementById("projectFrame").src =
-    "https://scratch.mit.edu/projects/" + projectId + "/embed";
+// 打字動畫
+const fullText = "SYSTEM_STATUS: ONLINE // WELCOME TO NOVACIRCUIT TEAM_";
+let idx=0;
+function typeWriter(){
+  if(idx<=fullText.length){
+    document.getElementById("typedText").innerHTML = fullText.slice(0,idx) + '<span class="blink">|</span>';
+    idx++;
+    setTimeout(typeWriter,50);
+  }
+}
+typeWriter();
+
+// 動態粒子背景
+for(let i=0;i<50;i++){
+  const p = document.createElement('div');
+  p.classList.add('particle');
+  p.style.left=Math.random()*100+'vw';
+  p.style.top=Math.random()*100+'vh';
+  document.getElementById('cyberBG').appendChild(p);
 }
 
-function closeModal() {
-  document.getElementById("projectModal").classList.remove("active");
-  document.getElementById("projectFrame").src = "";
+// 成員個人頁面切換
+function showProfile(name){
+  document.querySelectorAll('[id^="profile-"]').forEach(el=>el.classList.add('hidden'));
+  document.getElementById('profile-'+name).classList.remove('hidden');
+  document.getElementById('profile-'+name).scrollIntoView({behavior:'smooth'});
+}
+
+// 專案 Modal
+function openModal(projectId){
+  document.getElementById('projectModal').classList.add('active');
+  document.getElementById('projectFrame').src='https://scratch.mit.edu/projects/'+projectId+'/embed';
+}
+function closeModal(){
+  document.getElementById('projectModal').classList.remove('active');
+  document.getElementById('projectFrame').src='';
 }
 </script>
 
