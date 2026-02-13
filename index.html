@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch Team</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+body {
+  background: #020617;
+}
+.modal {
+  display: none;
+}
+.modal.active {
+  display: flex;
+}
+</style>
+</head>
+
+<body class="text-slate-200">
+
+<!-- Navbar -->
+<nav class="fixed top-0 w-full bg-black bg-opacity-70 backdrop-blur-md border-b border-gray-800 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold text-cyan-400">SCRATCH TEAM</div>
+    <div class="space-x-6 hidden md:block">
+      <a href="#home" class="hover:text-cyan-400">首頁</a>
+      <a href="#team" class="hover:text-cyan-400">成員</a>
+      <a href="#projects" class="hover:text-cyan-400">專案</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="pt-32 pb-20 text-center px-6">
+  <h1 class="text-5xl md:text-6xl font-black mb-6">
+    <span class="block">創意無界</span>
+    <span class="text-cyan-400">代碼構築未來</span>
+  </h1>
+
+  <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">
+    我們是來自 Scratch 的開發團隊，
+    將邏輯與創意轉化為真正可運行的世界。
+  </p>
+
+  <a href="#projects" class="px-6 py-3 bg-cyan-600 rounded-lg hover:bg-cyan-500">
+    探索專案
+  </a>
+</section>
+
+<!-- Team -->
+<section id="team" class="py-20 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">核心成員</h2>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
+      <h3 class="text-xl font-bold">光風濟月</h3>
+      <p class="text-gray-400 mb-3">系統架構 System Architect</p>
+      <p class="text-sm text-gray-400 mb-4">
+        專精於 3D 系統建構與邏輯設計。
+      </p>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="bg-gray-800 px-2 py-1 rounded">3D技術</span>
+        <span class="bg-gray-800 px-2 py-1 rounded">演算法</span>
+        <span class="bg-gray-800 px-2 py-1 rounded">系統優化</span>
+      </div>
+    </div>
+
+    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
+      <h3 class="text-xl font-bold">理智編程（理程）</h3>
+      <p class="text-gray-400 mb-3">視覺創建 Visual Creator</p>
+      <p class="text-sm text-gray-400 mb-4">
+        負責視覺設計與創意發想。
+      </p>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="bg-gray-800 px-2 py-1 rounded">視覺設計</span>
+        <span class="bg-gray-800 px-2 py-1 rounded">Debug</span>
+        <span class="bg-gray-800 px-2 py-1 rounded">流程架構</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">專案展示</h2>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div onclick="openModal('1227949073')" 
+         class="cursor-pointer bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500 transition">
+      <h3 class="text-lg font-bold">Project Alpha</h3>
+      <p class="text-sm text-gray-400">作者：理程</p>
+      <div class="mt-4 text-cyan-400 text-sm">點擊預覽 →</div>
+    </div>
+
+    <div onclick="openModal('1277010399')" 
+         class="cursor-pointer bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500 transition">
+      <h3 class="text-lg font-bold">Project Beta</h3>
+      <p class="text-sm text-gray-400">作者：理程</p>
+      <div class="mt-4 text-cyan-400 text-sm">點擊預覽 →</div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-80 items-center justify-center z-50">
+  <div class="bg-gray-900 w-11/12 max-w-4xl rounded-xl overflow-hidden border border-gray-700">
+    <div class="flex justify-between items-center p-4 border-b border-gray-700">
+      <span class="font-bold">專案預覽</span>
+      <button onclick="closeModal()">✕</button>
+    </div>
+    <div class="aspect-w-16 aspect-h-9 bg-black">
+      <iframe id="projectFrame"
+              width="100%"
+              height="500"
+              frameborder="0"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(projectId) {
+  document.getElementById("projectModal").classList.add("active");
+  document.getElementById("projectFrame").src =
+    "https://scratch.mit.edu/projects/" + projectId + "/embed";
+}
+
+function closeModal() {
+  document.getElementById("projectModal").classList.remove("active");
+  document.getElementById("projectFrame").src = "";
+}
+</script>
+
+</body>
+</html>
