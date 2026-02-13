@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光風濟月 - NovaCircuit</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+.modal { display:none; }
+.modal.active { display:flex; }
+.cursor-pointer { cursor:pointer; }
+</style>
+</head>
+<body class="text-slate-200 bg-gray-900">
+
+<nav class="fixed top-0 w-full bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-800 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <img src="assets/logo.png" class="w-10 h-10" alt="Logo">
+      <span class="text-xl font-bold text-green-400">NovaCircuit Team</span>
+    </div>
+    <div class="space-x-6 hidden md:block">
+      <a href="index.html" class="hover:text-green-400 transition">首頁</a>
+      <a href="team.html" class="hover:text-green-400 transition">團隊</a>
+      <a href="projects.html" class="hover:text-green-400 transition">專案</a>
+    </div>
+  </div>
+</nav>
+
+<section class="pt-32 px-6 max-w-4xl mx-auto">
+  <div class="text-center mb-12">
+    <img src="assets/avatar-GF.png" class="w-32 h-32 rounded-xl mx-auto mb-4" alt="光風濟月">
+    <h2 class="text-3xl font-bold text-green-300 mb-2">光風濟月</h2>
+    <p class="text-gray-300 mb-2">系統架構 System Architect</p>
+    <div class="flex justify-center gap-4">
+      <a href="https://scratch.mit.edu/users/fuguangji/" target="_blank" class="text-green-400 hover:text-green-300">Scratch</a>
+      <a href="https://fuguangji.github.io" target="_blank" class="text-green-400 hover:text-green-300">GitHub</a>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-bold text-green-400 mb-4">技能</h3>
+  <div class="flex flex-wrap gap-2 mb-8">
+    <span class="bg-gray-800 px-3 py-1 rounded border border-green-500">3D技術</span>
+    <span class="bg-gray-800 px-3 py-1 rounded border border-green-500">演算法</span>
+    <span class="bg-gray-800 px-3 py-1 rounded border border-green-500">系統優化</span>
+  </div>
+
+  <h3 class="text-xl font-bold text-green-400 mb-4">專案</h3>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div onclick="openModal('1178582633')" class="cursor-pointer bg-gray-800 p-4 rounded-xl border border-green-500">
+      <img src="assets/project-1178582633.png" class="mb-2 rounded" alt="專案 1">
+      <h4 class="text-green-300 font-bold">Project-Tower Defense</h4>
+      <p class="text-gray-300 text-sm">點擊預覽 →</p>
+    </div>
+    <div onclick="openModal('1100964825')" class="cursor-pointer bg-gray-800 p-4 rounded-xl border border-green-500">
+      <img src="assets/project-1100964825.png" class="mb-2 rounded" alt="專案 2">
+      <h4 class="text-green-300 font-bold">Project-Paper Minecraft</h4>
+      <p class="text-gray-300 text-sm">點擊預覽 →</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-80 items-center justify-center z-50">
+  <div class="bg-gray-900 w-11/12 max-w-4xl rounded-xl overflow-hidden border border-gray-700">
+    <div class="flex justify-between items-center p-4 border-b border-gray-700">
+      <span class="font-bold text-green-400">專案預覽</span>
+      <button onclick="closeModal()" class="text-gray-300 hover:text-white text-xl">✕</button>
+    </div>
+    <iframe id="projectFrame" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+function openModal(projectId) {
+  document.getElementById("projectModal").classList.add("active");
+  document.getElementById("projectFrame").src = "https://scratch.mit.edu/projects/" + projectId + "/embed";
+}
+function closeModal() {
+  document.getElementById("projectModal").classList.remove("active");
+  document.getElementById("projectFrame").src = "";
+}
+</script>
+
+</body>
+</html>
