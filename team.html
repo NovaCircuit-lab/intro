@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>團隊成員 - NovaCircuit</title>
+<title>NovaCircuit 團隊</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>body{background:#020617;}</style>
 </head>
-<body class="text-slate-200 bg-gray-900">
+<body class="text-slate-200">
 
 <nav class="fixed top-0 w-full bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-800 z-50">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3">
       <img src="assets/logo.png" class="w-10 h-10" alt="Logo">
       <span class="text-xl font-bold text-green-400">NovaCircuit Team</span>
-    </div>
+    </a>
     <div class="space-x-6 hidden md:block">
       <a href="index.html" class="hover:text-green-400 transition">首頁</a>
       <a href="team.html" class="hover:text-green-400 transition">團隊</a>
@@ -23,20 +24,27 @@
 </nav>
 
 <section class="pt-32 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-bold mb-12 text-center text-green-400">團隊成員</h2>
+  <h1 class="text-4xl font-bold mb-12 text-center text-green-400">核心成員</h1>
   <div class="grid md:grid-cols-2 gap-8">
-    <!-- 光風濟月 -->
-    <a href="member-gf.html" class="block bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition">
-      <img src="assets/avatar-GF.png" class="w-24 h-24 rounded-xl mb-4 mx-auto" alt="光風濟月">
-      <h3 class="text-xl font-bold text-green-300 text-center">光風濟月</h3>
-      <p class="text-gray-300 text-center">系統架構 System Architect</p>
-    </a>
+
     <!-- 理程 -->
-    <a href="member-lc.html" class="block bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition">
-      <img src="assets/avatar-LC.png" class="w-24 h-24 rounded-xl mb-4 mx-auto" alt="理程">
-      <h3 class="text-xl font-bold text-purple-300 text-center">理智編程（理程）</h3>
-      <p class="text-gray-300 text-center">視覺創建 Visual Creator</p>
-    </a>
+    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-purple-500 transition">
+      <a href="member-lc.html">
+        <img src="assets/avatar-LC.png" class="w-24 h-24 rounded-full mx-auto mb-4" alt="理程">
+        <h2 class="text-xl font-bold text-purple-300 text-center mb-1">理智編程（理程）</h2>
+      </a>
+      <p class="text-gray-300 text-center">視覺 UI 創建 / 創意發想</p>
+    </div>
+
+    <!-- 傅光濟 -->
+    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-green-500 transition">
+      <a href="member-fc.html">
+        <img src="assets/avatar-FC.png" class="w-24 h-24 rounded-full mx-auto mb-4" alt="傅光濟">
+        <h2 class="text-xl font-bold text-green-300 text-center mb-1">傅光濟</h2>
+      </a>
+      <p class="text-gray-300 text-center">系統架構 / 高效能程式開發</p>
+    </div>
+
   </div>
 </section>
 </body>
